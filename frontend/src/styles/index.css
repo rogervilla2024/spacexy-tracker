@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --spacexy-primary: #8b5cf6;
+  --spacexy-secondary: #7c3aed;
+  --spacexy-accent: #06b6d4;
+  --spacexy-nebula: #4c1d95;
+}
+
+body {
+  @apply bg-spacexy-darker text-slate-100 antialiased;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #050510 0%, #0a0a2a 50%, #050510 100%);
+  min-height: 100vh;
+}
+
+/* Starfield background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(2px 2px at 160px 120px, rgba(139,92,246,0.8), transparent),
+    radial-gradient(1px 1px at 230px 180px, #fff, transparent),
+    radial-gradient(2px 2px at 300px 50px, rgba(6,182,212,0.8), transparent),
+    radial-gradient(1px 1px at 350px 220px, #fff, transparent),
+    radial-gradient(2px 2px at 420px 90px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 500px 150px, #fff, transparent),
+    radial-gradient(2px 2px at 580px 200px, rgba(139,92,246,0.6), transparent),
+    radial-gradient(1px 1px at 650px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 720px 170px, rgba(6,182,212,0.6), transparent),
+    radial-gradient(1px 1px at 800px 100px, #fff, transparent),
+    radial-gradient(2px 2px at 880px 250px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 950px 60px, #fff, transparent);
+  background-size: 1000px 300px;
+  animation: stars 100s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+@keyframes stars {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 300px; }
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Gradient text for branding */
+.gradient-text {
+  @apply bg-gradient-to-r from-violet-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent;
+}
+
+.gradient-text-cosmic {
+  @apply bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent;
+}
+
+/* Card styling */
+.card {
+  @apply bg-slate-900/60 backdrop-blur-md rounded-xl p-4 border border-purple-500/20;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.1), inset 0 0 20px rgba(139, 92, 246, 0.05);
+}
+
+.card-glow {
+  @apply card;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.2), 0 0 60px rgba(6, 182, 212, 0.1);
+}
+
+/* Coordinate display */
+.coordinate-display {
+  @apply font-mono text-lg;
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-purple-600/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple-500/70;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Space XY specific animations */
+@keyframes rocket-launch {
+  0%, 100% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-45deg);
+  }
+}
+
+@keyframes coordinate-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes nebula-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.5), 0 0 60px rgba(6, 182, 212, 0.3);
+  }
+}
+
+.animate-rocket {
+  animation: rocket-launch 3s ease-in-out infinite;
+}
+
+.animate-coordinate {
+  animation: coordinate-pulse 2s ease-in-out infinite;
+}
+
+.animate-nebula {
+  animation: nebula-glow 4s ease-in-out infinite;
+}
+
+/* Multiplier colors - Space themed */
+.mult-instant { @apply text-red-500; }
+.mult-low { @apply text-orange-400; }
+.mult-medium { @apply text-yellow-400; }
+.mult-good { @apply text-lime-400; }
+.mult-great { @apply text-cyan-400; }
+.mult-excellent { @apply text-blue-400; }
+.mult-moon { @apply text-violet-400; }
+.mult-mars { @apply text-pink-400; }
+.mult-jupiter { @apply text-purple-400; }
+.mult-galaxy { @apply text-fuchsia-400; text-shadow: 0 0 10px currentColor; }
+
+/* Zone indicators */
+.zone-earth { @apply bg-green-500/20 text-green-400 border-green-500/30; }
+.zone-moon { @apply bg-slate-400/20 text-slate-300 border-slate-400/30; }
+.zone-mars { @apply bg-orange-500/20 text-orange-400 border-orange-500/30; }
+.zone-jupiter { @apply bg-amber-500/20 text-amber-400 border-amber-500/30; }
+.zone-galaxy { @apply bg-purple-500/20 text-purple-400 border-purple-500/30; }
+
+/* Nebula background effect */
+.nebula-bg {
+  position: relative;
+}
+
+.nebula-bg::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glow effects */
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
