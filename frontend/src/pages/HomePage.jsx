@@ -206,6 +206,27 @@ function HomePage({ rounds, summary, distribution, recentRounds, loading, refetc
               </div>
             </section>
 
+            {/* About Game Section */}
+            <section className="mb-6">
+              <div className="card">
+                <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <span>🚀</span>
+                  What is Space XY?
+                </h2>
+                <div className="prose prose-invert prose-sm max-w-none text-slate-300 space-y-4">
+                  <p>Space XY is BGaming's innovative space-themed crash game that introduces a unique dual-axis coordinate system to the crash genre. Launched in 2022, the game visualizes your journey through space as X and Y coordinates, creating an immersive experience that feels like navigating a real spacecraft through the cosmos.</p>
+                  <p>Unlike traditional crash games with simple ascending multipliers, Space XY displays your progress as coordinates moving through different space zones - from Earth Orbit to the Moon, Mars, Jupiter, and finally the Galaxy. This visualization makes tracking your position intuitive and adds a layer of excitement as you venture deeper into space.</p>
+                  <p>BGaming developed Space XY with their proven provably fair technology, ensuring complete transparency in every round. The game offers a 97% RTP, matching industry standards, with multipliers reaching up to 10,000x for those brave enough to explore the furthest reaches of the galaxy. The dual bet system allows strategic hedging similar to Aviator.</p>
+                  <p>Space exploration is exciting, but remember: Space XY's outcomes are determined by cryptographic random number generation. No coordinates from previous missions influence future ones. Each launch is independent. The house edge remains constant at 3%, making bankroll management essential for extended play sessions.</p>
+                </div>
+                <div className="mt-4 pt-4 border-t border-slate-700/50 flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-slate-400">RTP: 97%</span>
+                  <span className="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-slate-400">Provider: BGaming</span>
+                  <span className="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-slate-400">Max: 10,000x</span>
+                </div>
+              </div>
+            </section>
+
             {/* Recent Missions Table */}
             <section className="card">
               <div className="flex items-center justify-between mb-4">
